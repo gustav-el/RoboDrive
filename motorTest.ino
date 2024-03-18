@@ -1,3 +1,4 @@
+//this file has now been acknowledged by Gustav Ström
 #define motorPinRightDir  0//D2
 #define motorPinRightSpeed 5//D1
 
