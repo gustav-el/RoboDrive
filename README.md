@@ -56,3 +56,4 @@ Tips på fördjupningar för högre betyg (mer avancerade problem):
 - Skapa en karta över driverbotens rörelse för att illustrera hur den har kört
 - Byt ut den typ av input som ges via hemsidan till t.ex. en form som driverboten ska följa eller en punkt den ska köra till
 
+🐲🐲
