@@ -8,6 +8,12 @@ This project is called Driverbot, it is meant to be a driving car made by a mix 
 thorugh an MQTT broker which 
 controlls a dc motor and a servo. The dc motor is responsible for the car being able to drive forward/backward meanwhile the servo makes sure the car can turn.
 
+# How will it work?
+
+* You connect to the MQTT broker
+* Send packages from the website
+* The Esp receives the packages and adjust the speed and turns on/off the motor accordingly 
+
 # Goals 
 My goal with this project is to make a a fully functional driving car with some additional features.
 
@@ -15,3 +21,20 @@ My goal with this project is to make a a fully functional driving car with some 
 
 Using a distance sensor the Esp will read the distance to the nearest object(in the front) and stop or slow down the motor therefore causing the car to decrease its speed 
 towards the object ahead thus the car doesnt collide with other objects.
+
+**2. Login and credential system**
+
+When you open the website you will be greeted by a log in page to verify that the user has an account and a credential screen where u type in the needed credentitials to connect to the MQTT broker.
+
+
+# Order of work
+**1. Set up MQTT** Make it so that the MQTT is intergrated to the website so that you can give inputs on the website and it can print/or flash the Esp **Estimated finish** week 17
+
+**2. set up the website** Set up the website so that it can communicate with the Esp through inputs on the website **Estimated finish**  week 18
+
+**3. finish the car** Finish the car so that it can be fuly remotely controlled by the users inputs.**Estimated finish** week 20
+
+**4. Intergrate PARS** intergrate PARS to the driverbot so that it does not collide. **Esitimated finsh** week 21
+
+**5. Drive** Drive the car
+                                                                                                                                
