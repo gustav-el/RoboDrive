@@ -12,19 +12,22 @@ controlls a dc motor and a servo. The dc motor is responsible for the car being 
 
 * You connect to the MQTT broker
 * Send packages from the website
-* The Esp receives the packages and adjust the speed and turns on/off the motor accordingly 
+* The Esp receives the packages and adjust the speed and turns on/off the motor accordingly
+
+  ![canvas_driberbot-240418_0802](https://github.com/abbindustrigymnasium/driverbot-strom-el/assets/144807857/c4fe4e16-3f7e-4467-88f4-d6a42b00dc1b)
+
 
 # Goals 
-My goal with this project is to make a a fully functional driving car with some additional features.
+My goal with this project is to make a fully functional driving car with some additional features. **(hopefully high grade)**
 
 **1. PARS** proximity alert and reaction system.
 
 Using a distance sensor the Esp will read the distance to the nearest object(in the front) and stop or slow down the motor therefore causing the car to decrease its speed 
-towards the object ahead thus the car doesnt collide with other objects.
+towards the object ahead thus the car does not collide with other objects.
 
-**2. Login and credential system**
+**2. Autodrive**
 
-When you open the website you will be greeted by a log in page to verify that the user has an account and a credential screen where u type in the needed credentitials to connect to the MQTT broker.
+If a button on the website is pressed the car will continue driving aslong as it does not get to close to an object(not in the website skiss)
 
 
 # Order of work
@@ -37,4 +40,11 @@ When you open the website you will be greeted by a log in page to verify that th
 **4. Intergrate PARS** intergrate PARS to the driverbot so that it does not collide. **Esitimated finsh** week 21
 
 **5. Drive** Drive the car
+
+
+
+# mini skiss of the websites 2 pages
+![bild](https://github.com/abbindustrigymnasium/driverbot-strom-el/assets/144807857/fc18ded2-e41f-4392-b54a-831a9c3f0108)
+
+
                                                                                                                                 
