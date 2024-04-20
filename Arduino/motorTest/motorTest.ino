@@ -1,6 +1,8 @@
 //this file has now been acknowledged by Gustav Ström
-#define motorPinRightDir  0//D2
+#define motorPinRightDir  4//D2
 #define motorPinRightSpeed 5//D1
+
+
 
 void setup() {
   // put your setup code here, to run once:
