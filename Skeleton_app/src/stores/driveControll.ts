@@ -38,7 +38,7 @@
     });
   });
   
-  
+  //logs the messages and on which topic
   client.on('message', (topic, message) => {
     console.log(`Received message on topic ${topic}: ${message.toString()}`);
   });

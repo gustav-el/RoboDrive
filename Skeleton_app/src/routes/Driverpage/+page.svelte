@@ -3,7 +3,7 @@ import ".././/../components/credentials"
 import { onSend } from '../../stores/driveControll';
 import "../../stores/driveControll"
 
-	//send messages to that determine direction of car
+	//send messages to determine direction of car
 	function sendMessage(direction: string) {
         const message = direction === 'up' ? 'up' :
                                         direction === 'down' ? 'down' :
