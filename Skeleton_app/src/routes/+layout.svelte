@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../app.postcss';
 	import { AppShell, AppBar } from '@skeletonlabs/skeleton';
-	import { ListBox, ListBoxItem } from '@skeletonlabs/skeleton';
+
 
 	function goToHome()
 		{
@@ -9,7 +9,7 @@
 		}
 	function goToDrivePage()
 	{
-		window.location.href = '/Lebrooon'
+		window.location.href = '/Driverpage'
 	}
 	
 
@@ -18,6 +18,7 @@
 
 <!-- App Shell -->
 <AppShell>
+
 	<svelte:fragment slot="header">
 		<!-- App Bar -->
 		<AppBar>
