@@ -2,6 +2,7 @@
 import ".././/../components/credentials"
 import { onSend } from '../../stores/driveControll';
 import "../../stores/driveControll"
+    import { onMount } from "svelte";
 
 	//send messages to determine direction of car
 	function sendMessage(direction: string) {
@@ -14,6 +15,42 @@ import "../../stores/driveControll"
         onSend("ws://maqiatto.com:8883", message)
 		
     }
+	//handles button being clicked 
+	function handleButtonActivation(buttonId: string)
+	{
+		const button = document.getElementById(buttonId);
+		if (button)//check if button exists and if  it is not null
+		{
+			button.click()
+		}
+	}
+	//controll what different keys activates which button 
+	function controlButtons(event:KeyboardEvent){
+		switch (event.key){
+			case 'w':
+				//direction ='up';
+				handleButtonActivation('upButton')
+				console.log("w pressed")
+				break;
+			case 'a':
+				handleButtonActivation('leftButton')
+				break;
+			case 's':
+				handleButtonActivation('downButton')
+				break;
+			case 'd':
+				handleButtonActivation('rightButton')
+				break;
+			default: 
+			//do nothing when any other key than wasd is pressed
+				break;
+		}
+}
+onMount(() => {
+	document.addEventListener('keydown', controlButtons);	//adds listener to buttons for keydowns	
+})
+
+
 </script>
 <div class="container h-full mx-auto flex justify-center items-center">
 	<div class="space-y-10 text-center flex flex-col items-center">
@@ -32,25 +69,25 @@ import "../../stores/driveControll"
 		</figure>
 		<div class="flex justify-center space-x-2">
 
-
+		<!-- top button-->
 		</div>
-		<button class="btn variant-filled" on:click={() => sendMessage('up')}>
-            Up</button>
+		<button id="upButton" class="btn variant-filled"  on:click={() => sendMessage('up')}>
+            Forward</button>
         <!-- Middle Row of Buttons -->
         <div class="flex justify-between space-x-2 w-full">
-			<button class="btn variant-filled" on:click={() => sendMessage('left')}>
+			<button id="leftButton" class="btn variant-filled" on:click={()  => sendMessage('left')}>
 				Left
 			</button>
-			<button class="btn variant-filled" on:click={() => sendMessage('down')}>
+			<button id="downButton"class="btn variant-filled" 	on:keydown={() =>sendMessage('down')} on:click={() => sendMessage('down')}>
 				Down
 			</button>
-            <button class="btn variant-filled" on:click={() => sendMessage('right')}>
+            <button id="rightButton" class="btn variant-filled" on:click={() => sendMessage('right')}>
                 Right
             </button>        
       </div>
 </div>
 </div>
-	<driveControll></driveControll>
+
 <style lang="postcss">
 	figure {
 		@apply flex relative flex-col;
