@@ -19,7 +19,7 @@ EspMQTTClient client(
   MqttUsername,   // MQTT username
   MqttPassword,   // MQTT password
   "ordinador",    // Unique client name 
-  1883                                // port 
+  1883            // port 
 );
 
 
@@ -45,10 +45,10 @@ void driveBackwards(){
 void handleMotorControll(const String &payload) {
   // Check if the payload is "up"
   if (payload   == "up") {
-    driveForward(); // Call the motor control function
+    driveForward(); 
   }
   else if (payload == "down"){
-    driveBackwards();
+    driveBackwards();//drive backwards
   }
   else {
     // Stop the motor or handle other payloads if necessary
@@ -61,23 +61,21 @@ void setUpWiFi()
   WiFi.begin(ssid, password);
   while (WiFi.status() != WL_CONNECTED)
   {
-    delay(1000);
     Serial.print("Connecting to ");
     Serial.println(ssid);
+    delay(1000);
   }
+  Serial.print("Connected to WiFi");
 }
 
 void onConnectionEstablished()
 {
-    client.publish(MqttTopic, "", true); // Clear retained message
   client.subscribe(MqttTopic, [](const String &topic, const String &payload) {
     Serial.println("Received message:");
     Serial.print("Topic: ");
     Serial.println(topic);
     Serial.print("Payload: ");
     Serial.println(payload);
-   handleMotorControll(payload);
+    handleMotorControll(payload);//call handleMotorControll with the given payload e.g "up" 
   }); 
 }
-
-

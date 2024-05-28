@@ -11,9 +11,11 @@
 	{
 		window.location.href = '/Driverpage'
 	}
+	function goToInfo()
+	{
+		window.location.href='/Infopage'
+	}
 	
-
-	let valueSingle= "books"
 </script>
 
 <!-- App Shell -->
@@ -30,6 +32,7 @@
 					
 					<button class="btn variant-filled-primary" on:click={goToHome}>Home </button>
 					<button class="btn variant-filled-primary" on:click={goToDrivePage}>Drive</button>
+					<button class="btn variant-filled-primary" on:click={goToInfo}>Info</button>
 				</div>
 			</svelte:fragment>
 		</AppBar>

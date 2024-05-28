@@ -1,37 +1,11 @@
-<div class="container h-full mx-auto flex justify-center items-center">
-	<div class="space-y-10 text-center flex flex-col items-center">
-
-	
-		<h2 class="h2">Home</h2>
-		
-		<div class="flex items-center"> 
-			<h2 class ="mr-2"> Exit</h2>
-			<button type="button" class="btn-icon variant-filled">
-				<span class="material-symbols-outlined">exit_to_app</span></button>
-		</div>
+<div class="container h-full mx-auto flex justify-center ">
+	<div class=" top-2 space-y-3 text-center flex flex-col ">
+		<h2 class="h2">Home</h2>	
+		<div class="text-left space-y-4">
+			<h3>This is a project called DriverBot it is a car which can be controlled from distance go the Drive menu to controll the car</h3>
+		</div>	
+	<div>
+		<h3>Go to the Info page for further information about how to controll the car and for other information as well </h3>
+	</div>
 	</div>
 </div>
-
-
-<style lang="postcss">
-
-	@keyframes glow {
-		0% {
-			@apply bg-primary-400/50;
-		}
-		33% {
-			@apply bg-secondary-400/50;
-		}
-		66% {
-			@apply bg-tertiary-400/50;
-		}
-		100% {
-			@apply bg-primary-400/50;
-		}
-	}
-	@keyframes pulse {
-		50% {
-			transform: scale(1.5);
-		}
-	}
-</style>
