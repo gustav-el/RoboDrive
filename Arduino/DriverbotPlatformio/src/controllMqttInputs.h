@@ -9,6 +9,7 @@ void setUpWiFi();
 void onConnectionEstablished();
 void stopDriving();
 void initializeServo();
+void distanceMeater();
 
 extern bool upKeyDown;
 #endif // ESTABLISHBROKERCONNECTION_H

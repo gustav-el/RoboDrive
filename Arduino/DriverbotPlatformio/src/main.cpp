@@ -6,7 +6,9 @@
 #define POWERPIN D1
 #define DIRPIN1 D2
 #define DIRPIN2 D3
-
+#define ECHOPIN D5
+#define TRIGPIN D6
+#define MetricSystem
 
 
 void setup() {
@@ -15,7 +17,8 @@ void setup() {
   setUpWiFi();
    //onConnectionEstablished(); 
 
-  
+  pinMode(ECHOPIN, INPUT);
+  pinMode(TRIGPIN, OUTPUT);
   pinMode(DIRPIN1, OUTPUT);
   pinMode(DIRPIN2, OUTPUT);
   pinMode(POWERPIN, OUTPUT);
@@ -33,6 +36,7 @@ void loop() {
   client.loop(); // Maintain MQTT connection
     if (!client.isConnected()) {
     onConnectionEstablished();
-
+ 
   }
+    distanceMeater();
 }

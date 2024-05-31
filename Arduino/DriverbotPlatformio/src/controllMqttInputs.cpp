@@ -5,8 +5,11 @@
 #include "credentials.h"
 #include "controllMqttInputs.h"
 #include <Servo.h> // servo library  
+#define ECHOPIN D5
+#define TRIGPIN D6
 
 Servo servo;
+
 
 #define POWERPIN D1
 #define DIRPIN1 D2
@@ -28,13 +31,13 @@ EspMQTTClient client(
 );
 
 void initializeServo() {
-servo.attach(0);
+servo.attach(2);
 }
 void driveRight(){
-  servo.write(160);
+  servo.write(150);
 }
 void driveLeft(){
-  servo.write(20);
+  servo.write(30);
 
 }
 
@@ -80,7 +83,7 @@ void handleMotorControll(const String &payload) {
     driveRight();
     Serial.print("going right");
   }
-  else {
+  else if(payload=="stop"){
     // Stop the motor or handle other payloads if necessary
     stopDriving();
     servo.write(90);
@@ -107,5 +110,25 @@ void onConnectionEstablished()
     Serial.print("Payload: ");
     Serial.println(payload);
     handleMotorControll(payload);//call handleMotorControll with the given payload e.g "up" 
+
+
   }); 
+}
+void distanceMeater(){
+  digitalWrite(TRIGPIN, LOW); // Set trigger pin low
+  delayMicroseconds(2); // Wait for stable
+  digitalWrite(TRIGPIN, HIGH); // Send 10us pulse
+  delayMicroseconds(10);
+  digitalWrite(TRIGPIN, LOW);
+  long duration = pulseIn(ECHOPIN, HIGH); // Measure pulse width of echo pin
+float distance = duration * 0.034 / 2; // Convert pulse width to distance in cm
+  // Serial.print("Distance: ");
+ // Serial.print(distance);
+  //Serial.println(" cm");
+
+    if(distance<=20){
+    stopDriving();
+    Serial.print("to close distance");
+  }
+
 }

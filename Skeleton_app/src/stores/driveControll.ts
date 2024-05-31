@@ -1,10 +1,10 @@
 //this file controlls the connection to the MQTT broker as well as publishing and subscribing to it
   import mqtt from 'mqtt';
   import {MQTT_USERNAME, MQTT_PASSWORD, MQTT_TOPIC} from '../components/credentials';
+  import { writable } from 'svelte/store';
+
   //mqtt broker details
-  
   const BROKER_URL='ws://maqiatto.com:8883';
-  
   const TOPIC=MQTT_TOPIC
   //client options
   const OPTIONS: mqtt.IClientOptions={
@@ -43,3 +43,13 @@
   client.on('message', (topic, message) => {
     console.log(`Received message on topic ${topic}: ${message.toString()}`);
   });  
+
+  
+  interface Position{
+    latitude: number;
+    longitude: number;
+    timestamp?: string;
+  }
+
+  // Svelte store to hold the position data
+export const positions = writable<Position[]>([]);
