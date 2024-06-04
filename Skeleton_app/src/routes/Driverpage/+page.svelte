@@ -75,7 +75,6 @@ onMount(() => {
 			</button>		
 		</div>
 		<div class="flex justify-center gap-1">
-			
 			<button id="upButton" class="btn variant-filled text-xl"  on:click={() => sendMessage('up')}>
 				<span class="material-symbols-outlined rotate-0">
 					arrow_upward

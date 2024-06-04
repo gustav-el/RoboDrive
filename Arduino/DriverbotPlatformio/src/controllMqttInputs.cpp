@@ -1,5 +1,7 @@
+// File that controlls mqtt messages and handles them correctly and 
+
 #include <Arduino.h>
-#include <EspMQTTClient.h>
+#include <EspMQTTClient.h>//dependancy on PubSubClient
 #include <PubSubClient.h>
 #include <ESP8266WiFi.h>
 #include "credentials.h"
@@ -8,30 +10,32 @@
 #define ECHOPIN D5
 #define TRIGPIN D6
 
-Servo servo;
+Servo servo;//create Servo object called servo
 
 
 #define POWERPIN D1
 #define DIRPIN1 D2
 #define DIRPIN2 D3
-const char* ssid = WifiSSID;
+//creates a constant pointer to the string imported from credentials.h
+const char* ssid = WiFiSSID;
 const char* password = WiFiPassword;
-bool upKeyDown= false;
+
 bool goingForward=false;
 bool goingBackwards=false;
 
+//create client object with given information
 EspMQTTClient client(
-  ssid,           // WifiSSID
-  password,       // WifiPassword
-  "maqiatto.com", // MQTT broker ip
-  MqttUsername,   // MQTT username
-  MqttPassword,   // MQTT password
-  "ordinador",    // Unique client name 
-  1883            // port 
+  ssid,           
+  password,       
+  "maqiatto.com", 
+  MqttUsername,   
+  MqttPassword,   
+  "ordinador",    
+  1883   // TCP port
 );
 
 void initializeServo() {
-servo.attach(2);
+servo.attach(2);//attach servo to correct pin
 }
 void driveRight(){
   servo.write(150);
@@ -40,7 +44,6 @@ void driveLeft(){
   servo.write(30);
 
 }
-
 void driveForward(){
   digitalWrite(DIRPIN1, LOW);
   digitalWrite(DIRPIN2, HIGH);
@@ -49,7 +52,6 @@ void driveForward(){
 }
 void stopDriving()
 {
-  //digitalWrite(motorPin, LOW);
   analogWrite(POWERPIN, 0);
   Serial.println("stopped");
 }
@@ -60,6 +62,7 @@ void driveBackwards(){
   Serial.print("going backwards");
 }
 
+//
 void handleMotorControll(const String &payload) {
   // Check if the payload is "up"
   if (payload   == "up") {
@@ -101,34 +104,31 @@ void setUpWiFi()
   }
 }
 
+// this function is called once connected to mqtt broker OBS if using EspMQTTClient this function must be implemented
 void onConnectionEstablished()
 {
   client.subscribe(MqttTopic, [](const String &topic, const String &payload) {
+    //print out information about the recived messages
     Serial.println("Received message:");
     Serial.print("Topic: ");
     Serial.println(topic);
     Serial.print("Payload: ");
     Serial.println(payload);
     handleMotorControll(payload);//call handleMotorControll with the given payload e.g "up" 
-
-
   }); 
 }
 void distanceMeater(){
-  digitalWrite(TRIGPIN, LOW); // Set trigger pin low
-  delayMicroseconds(2); // Wait for stable
-  digitalWrite(TRIGPIN, HIGH); // Send 10us pulse
+  digitalWrite(TRIGPIN, LOW);
+  delayMicroseconds(2); // delay so distance sensor work
+  digitalWrite(TRIGPIN, HIGH); 
   delayMicroseconds(10);
   digitalWrite(TRIGPIN, LOW);
   long duration = pulseIn(ECHOPIN, HIGH); // Measure pulse width of echo pin
 float distance = duration * 0.034 / 2; // Convert pulse width to distance in cm
-  // Serial.print("Distance: ");
- // Serial.print(distance);
-  //Serial.println(" cm");
 
+//if the distance is under 20cm stop driving 
     if(distance<=20){
     stopDriving();
     Serial.print("to close distance");
   }
-
 }

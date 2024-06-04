@@ -1,25 +1,25 @@
 //this file controlls the connection to the MQTT broker as well as publishing and subscribing to it
   import mqtt from 'mqtt';
   import {MQTT_USERNAME, MQTT_PASSWORD, MQTT_TOPIC} from '../components/credentials';
-  import { writable } from 'svelte/store';
 
   //mqtt broker details
   const BROKER_URL='ws://maqiatto.com:8883';
   const TOPIC=MQTT_TOPIC
   //client options
   const OPTIONS: mqtt.IClientOptions={
-      clientId:'client_website',
+      clientId:'clientWebsite',
       username: MQTT_USERNAME,
       password: MQTT_PASSWORD,
       clean: false,
   };
-  
+  //connect to broker
   const client=mqtt.connect(BROKER_URL, OPTIONS)
 
+  //when reciving messages on the broker console.log them
   const onMessage = (TOPIC: string, message: string) => {
   console.log(message);
 };
-//export function which handles the messages from buttons to the car see more in Driverpage
+//export function which publishes messages when buttons on Driverpage are pressed
  export function onSend(BROKER_URL: string, message: string) {
     client.publish(TOPIC, message, (err) => {
       if (err) {
@@ -44,12 +44,3 @@
     console.log(`Received message on topic ${topic}: ${message.toString()}`);
   });  
 
-  
-  interface Position{
-    latitude: number;
-    longitude: number;
-    timestamp?: string;
-  }
-
-  // Svelte store to hold the position data
-export const positions = writable<Position[]>([]);
