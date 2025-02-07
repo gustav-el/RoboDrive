@@ -18,17 +18,12 @@ controlls a dc motor and a servo. The dc motor is responsible for the car being 
 
 
 # Goals 
-My goal with this project is to make a fully functional driving car with some additional features. **(hopefully high grade)**
+My goal with this project is to make a fully functional driving car with some additional features. 
 
 **1. PARS** proximity alert and reaction system.
 
 Using a distance sensor the Esp will read the distance to the nearest object(in the front) and stop or slow down the motor therefore causing the car to decrease its speed 
 towards the object ahead thus the car does not collide with other objects.
-
-**2. Autodrive**
-
-If a button on the website is pressed the car will continue driving aslong as it does not get to close to an object(not in the website skiss)
-
 
 # Order of work
 **1. Set up MQTT** Make it so that the MQTT is intergrated to the website so that you can give inputs on the website and it can print/or flash the Esp **Estimated finish** week 17
@@ -40,11 +35,3 @@ If a button on the website is pressed the car will continue driving aslong as it
 **4. Intergrate PARS** intergrate PARS to the driverbot so that it does not collide. **Esitimated finsh** week 21
 
 **5. Drive** Drive the car
-
-
-
-# mini skiss of the websites 2 pages
-![bild](https://github.com/abbindustrigymnasium/driverbot-strom-el/assets/144807857/fc18ded2-e41f-4392-b54a-831a9c3f0108)
-
-
-                                                                                                                                
