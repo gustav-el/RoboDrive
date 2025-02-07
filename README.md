@@ -1,6 +1,6 @@
 # RoboDrive
 
-RoboDrive is an advanced robotics control system designed to manage a small robot's movements with precision and efficiency.
+RoboDrive is a control system to manage a small robot's movements with precision and efficiency.
 
 ## Features
 
